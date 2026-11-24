@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Filira Cosmetics · O verdadeiro autocuidado começa aqui</title>
+<meta name="description" content="Perfumes árabes, body splash e cuidados de todo dia. De Itupeva para todo o Brasil.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#13263a;
+    --ink-2:#3d5064;
+    --muted:#6d7d8d;
+    --blue:#4f80a8;
+    --blue-d:#3a6890;
+    --sky:#e7eff6;
+    --sky-2:#d4e3ef;
+    --mist:#f3f6f9;
+    --cream:#f8f5f0;
+    --line:#e3e9ef;
+    --gold:#b38b4d;
+    --white:#fff;
+    --r:22px;
+    --shadow:0 18px 40px -24px rgba(19,38,58,.35);
+    --serif:"Fraunces", Georgia, serif;
+    --sans:"Manrope", system-ui, -apple-system, Segoe UI, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;line-height:1.5}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+  .wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+  .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--blue)}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.05}
+  h2{font-size:clamp(2rem,4vw,3rem)}
+  h2 em,h1 em{font-style:italic;color:var(--blue)}
+
+  .btn{display:inline-flex;align-items:center;gap:.55em;padding:.95em 1.6em;border-radius:999px;font-weight:600;font-size:.95rem;transition:transform .2s, background .2s, box-shadow .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-dark{background:var(--ink);color:#fff;box-shadow:var(--shadow)}
+  .btn-dark:hover{background:var(--blue-d)}
+  .btn-ghost{border:1.5px solid var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:#fff}
+  .btn svg{width:18px;height:18px}
+
+  /* barra de avisos */
+  .ticker{background:var(--ink);color:#dce8f2;font-size:.8rem;font-weight:500;overflow:hidden;white-space:nowrap}
+  .ticker-track{display:inline-flex;gap:3rem;padding:.6rem 0;animation:tick 30s linear infinite}
+  .ticker span::before{content:"✦";color:var(--blue);margin-right:.8rem}
+  @keyframes tick{to{transform:translateX(-50%)}}
+
+  /* topo */
+  header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+  header.scrolled{border-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:1rem}
+  .logo{display:flex;align-items:center;gap:.7rem}
+  .logo-mark{width:42px;height:42px;border-radius:50%;background:var(--blue);display:grid;place-items:center}
+  .mono{font-family:var(--serif);font-style:italic;font-weight:400;color:#fff;font-size:1.55rem;line-height:1;margin-top:-2px}
+  .logo-text{display:flex;flex-direction:column;line-height:1}
+  .logo-text b{font-family:var(--serif);font-weight:500;font-size:1.45rem;letter-spacing:.01em}
+  .logo-text small{font-size:.58rem;letter-spacing:.42em;color:var(--muted);margin-top:4px}
+  .menu{display:flex;gap:2rem;font-weight:500;font-size:.92rem}
+  .menu a{position:relative;padding:.3rem 0}
+  .menu a::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;background:var(--blue);transition:width .25s}
+  .menu a:hover::after{width:100%}
+  .icons{display:flex;align-items:center;gap:.4rem}
+  .icon-btn{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;transition:background .2s;position:relative}
+  .icon-btn:hover{background:var(--sky)}
+  .icon-btn svg{width:21px;height:21px}
+  .cart-count{position:absolute;top:4px;right:3px;background:var(--blue);color:#fff;font-size:.62rem;font-weight:700;min-width:17px;height:17px;border-radius:9px;display:grid;place-items:center}
+  .burger{display:none}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff 0%,var(--mist) 100%)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:3rem;min-height:min(calc(100vh - 110px),780px);padding:3rem 0 4rem}
+  .hero h1{font-size:clamp(2.8rem,6.2vw,5.4rem);margin:1.1rem 0 1.4rem}
+  .hero p.lead{font-size:1.12rem;color:var(--ink-2);max-width:32rem}
+  .hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem}
+  .hero-facts{display:flex;gap:2rem;margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line);max-width:32rem}
+  .hero-facts div b{display:block;font-family:var(--serif);font-size:1.55rem;font-weight:500}
+  .hero-facts div span{font-size:.8rem;color:var(--muted)}
+
+  .stage{position:relative;aspect-ratio:1/1.05;max-height:640px;justify-self:center;width:100%}
+  .arch{position:absolute;inset:4% 10% 0 10%;border-radius:999px 999px 28px 28px;background:radial-gradient(120% 80% at 50% 10%,#f6f9fc 0%,var(--sky) 45%,var(--sky-2) 100%);overflow:hidden}
+  .arch::after{content:"";position:absolute;inset:auto -20% -30% -20%;height:55%;background:radial-gradient(closest-side,rgba(79,128,168,.22),transparent)}
+  .ring{position:absolute;left:50%;top:9%;width:62%;aspect-ratio:1;translate:-50% 0;border:1px solid rgba(79,128,168,.35);border-radius:50%}
+  .bottle{position:absolute;width:auto;filter:drop-shadow(0 28px 24px rgba(19,38,58,.22));animation:float 7s ease-in-out infinite}
+  .b1{height:62%;left:50%;translate:-50% 0;bottom:9%;z-index:2}
+  .b2{height:44%;left:15%;bottom:7%;animation-delay:-2.3s}
+  .b3{height:42%;right:13%;bottom:7%;animation-delay:-4.6s}
+  @keyframes float{50%{transform:translateY(-12px)}}
+  .chip{position:absolute;z-index:3;background:#fff;border-radius:16px;padding:.75rem 1rem;box-shadow:var(--shadow);font-size:.8rem;display:flex;align-items:center;gap:.6rem}
+  .chip b{display:block;font-size:.9rem}
+  .chip span{color:var(--muted)}
+  .chip i{width:34px;height:34px;border-radius:50%;background:var(--sky);display:grid;place-items:center;font-style:normal;color:var(--blue)}
+  .chip-a{bottom:16%;left:0}
+  .chip-b{top:20%;right:2%}
+
+  /* categorias */
+  section{padding:6.5rem 0}
+  .head{display:flex;align-items:end;justify-content:space-between;gap:2rem;margin-bottom:2.8rem;flex-wrap:wrap}
+  .head p{color:var(--muted);max-width:28rem}
+  .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+  .cat{position:relative;border-radius:var(--r);overflow:hidden;background:var(--mist);aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:space-between;padding:1.4rem;transition:transform .35s}
+  .cat:hover{transform:translateY(-6px)}
+  .cat img{position:absolute;left:12%;top:16%;width:76%;height:56%;object-fit:contain;filter:drop-shadow(0 18px 16px rgba(19,38,58,.15));transition:transform .5s}
+  .cat:hover img{transform:scale(1.06)}
+  .cat:nth-child(1){background:var(--cream)}
+  .cat:nth-child(2){background:#f6ece9}
+  .cat:nth-child(3){background:var(--sky)}
+  .cat:nth-child(4){background:#eef3ee}
+  .cat .n{font-size:.75rem;color:var(--muted);font-weight:600;position:relative}
+  .cat h3{font-size:1.5rem;position:relative}
+  .cat .go{position:relative;display:flex;justify-content:space-between;align-items:end}
+  .cat .arrow{width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;transition:background .2s,color .2s}
+  .cat:hover .arrow{background:var(--ink);color:#fff}
+
+  /* perfumes */
+  .perfumes{background:var(--ink);color:#fff;border-radius:40px;margin:0 12px}
+  .perfumes .eyebrow{color:#9fc0dc}
+  .perfumes h2 em{color:#9fc0dc}
+  .perfumes .head p{color:#b4c3d1}
+  .filters{display:flex;gap:.5rem;flex-wrap:wrap}
+  .filters button{padding:.6rem 1.15rem;border-radius:999px;border:1px solid rgba(255,255,255,.22);font-size:.88rem;font-weight:500;transition:all .2s}
+  .filters button:hover{border-color:#fff}
+  .filters button.on{background:#fff;color:var(--ink);border-color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+  .card{background:#fff;color:var(--ink);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s, box-shadow .3s}
+  .card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -30px rgba(0,0,0,.6)}
+  .card .pic{position:relative;background:var(--mist);aspect-ratio:1;overflow:hidden}
+  .card .pic img{width:100%;height:100%;object-fit:contain;padding:13%;filter:drop-shadow(0 16px 14px rgba(19,38,58,.14));transition:transform .5s}
+  .card:hover .pic img{transform:scale(1.07)}
+  .tags{position:absolute;top:12px;left:12px;display:flex;gap:6px;flex-wrap:wrap}
+  .tag{font-size:.68rem;font-weight:700;padding:.3rem .6rem;border-radius:999px;background:#fff;color:var(--ink)}
+  .tag.off{background:var(--blue);color:#fff}
+  .card .body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.25rem;flex:1}
+  .card .g{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+  .card h3{font-size:1.25rem;font-weight:500}
+  .price{margin-top:.5rem;display:flex;align-items:baseline;gap:.5rem}
+  .price b{font-size:1.15rem}
+  .price s{font-size:.85rem;color:var(--muted)}
+  .pix{font-size:.8rem;color:var(--blue-d);font-weight:600}
+  .add{margin-top:auto;padding-top:1rem}
+  .add a{display:flex;justify-content:center;padding:.75rem;border-radius:999px;background:var(--sky);font-weight:600;font-size:.88rem;transition:background .2s,color .2s}
+  .card:hover .add a{background:var(--ink);color:#fff}
+  .card.hide{display:none}
+  .grid .card.feat{grid-column:span 2;grid-row:span 2}
+  .card.feat .pic{aspect-ratio:auto;flex:1;min-height:320px;background:radial-gradient(90% 80% at 50% 40%,#fff 0%,var(--sky) 70%)}
+  .card.feat .pic img{position:absolute;inset:0;padding:12% 22% 8%}
+  .card.feat .body{flex:none}
+  .card.feat h3{font-size:1.9rem}
+  .card.feat .desc{color:var(--ink-2);font-size:.92rem;margin-top:.3rem;max-width:30rem}
+
+  /* fundador */
+  .founder-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:4rem;align-items:center}
+  .photo{position:relative;aspect-ratio:4/5;border-radius:999px 999px var(--r) var(--r);background:linear-gradient(160deg,var(--sky) 0%,var(--blue) 120%);overflow:hidden;display:grid;place-items:center}
+  .photo .mono{font-size:clamp(9rem,18vw,15rem);opacity:.92}
+  .photo .note{position:absolute;bottom:1.2rem;left:50%;translate:-50% 0;background:rgba(255,255,255,.9);padding:.45rem .9rem;border-radius:999px;font-size:.75rem;font-weight:600;white-space:nowrap}
+  .quote{font-family:var(--serif);font-size:clamp(2.1rem,4.4vw,3.6rem);line-height:1.08;margin:1.2rem 0 1.6rem}
+  .quote em{color:var(--blue)}
+  .founder p.txt{color:var(--ink-2);font-size:1.05rem;max-width:34rem;margin-bottom:1rem}
+
+  /* dia a dia */
+  .daily{background:var(--cream)}
+  .rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3.6rem)/4);gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem;scrollbar-width:thin}
+  .rail .card{scroll-snap-align:start;border:1px solid var(--line)}
+  .rail .card:hover{box-shadow:var(--shadow)}
+  .rail .card .pic{background:#fff}
+  .rail-nav{display:flex;gap:.5rem}
+  .rail-nav button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;transition:all .2s}
+  .rail-nav button:hover{background:var(--ink);color:#fff}
+
+  /* vantagens */
+  .perks{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:3rem 0}
+  .perk{display:flex;gap:1rem;align-items:flex-start;padding:1.4rem;border-radius:var(--r);background:var(--mist)}
+  .perk i{flex:none;width:46px;height:46px;border-radius:14px;background:#fff;display:grid;place-items:center;color:var(--blue)}
+  .perk i svg{width:22px;height:22px}
+  .perk b{display:block;font-size:.98rem}
+  .perk span{font-size:.85rem;color:var(--muted)}
+
+  /* instagram */
+  .insta{text-align:center;padding:6rem 0;background:linear-gradient(180deg,#fff,var(--sky))}
+  .insta h2{font-size:clamp(2.4rem,5vw,4rem);margin:1rem 0 1.2rem}
+  .insta p{color:var(--ink-2);max-width:30rem;margin:0 auto 2rem}
+
+  footer{background:var(--ink);color:#c9d6e2;padding:4.5rem 0 2rem;font-size:.9rem}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.12)}
+  footer h4{color:#fff;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem}
+  footer ul{list-style:none;display:grid;gap:.55rem}
+  footer a:hover{color:#fff}
+  footer .logo-text small{color:#8ea3b6}
+  footer .logo-text b{color:#fff}
+  .foot p{margin-top:1rem;max-width:20rem;color:#9fb1c2}
+  .social{display:flex;gap:.5rem;margin-top:1.4rem}
+  .social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;transition:background .2s}
+  .social a:hover{background:rgba(255,255,255,.12)}
+  .social svg{width:18px;height:18px}
+  .legal{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:1.6rem;font-size:.78rem;color:#8ea3b6}
+
+  .wa{position:fixed;right:20px;bottom:20px;z-index:50;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.6);transition:transform .2s}
+  .wa:hover{transform:scale(1.08)}
+  .wa svg{width:30px;height:30px}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:1024px){
+    .grid{grid-template-columns:repeat(3,1fr)}
+    .cats{grid-template-columns:repeat(2,1fr)}
+    .cat{aspect-ratio:4/3.6}
+    .rail{grid-auto-columns:calc((100% - 2.4rem)/3)}
+    .perks{grid-template-columns:repeat(2,1fr)}
+    .foot{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:820px){
+    .menu{display:none;position:absolute;top:76px;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:.5rem 20px 1.2rem;border-bottom:1px solid var(--line)}
+    .menu.open{display:flex}
+    .menu a{padding:.9rem 0;border-bottom:1px solid var(--line);font-size:1rem}
+    .burger{display:grid}
+    .hero-grid{grid-template-columns:1fr;min-height:0;max-height:none;padding:2rem 0 3rem;gap:1rem}
+    .stage{max-width:460px;order:-1}
+    .founder-grid{grid-template-columns:1fr;gap:2.5rem}
+    .photo{max-width:420px;width:100%;margin-inline:auto}
+    section{padding:4.5rem 0}
+    .perfumes{border-radius:28px;margin:0 8px}
+  }
+  @media (max-width:600px){
+    .grid{grid-template-columns:repeat(2,1fr);gap:.8rem}
+    .card .body{padding:.9rem}
+    .card h3{font-size:1.05rem}
+    .price b{font-size:1rem}
+    .rail{grid-auto-columns:72%}
+    .perks{grid-template-columns:1fr}
+    .foot{grid-template-columns:1fr}
+    .hero-facts{gap:1.2rem}
+    .hero-facts div b{font-size:1.25rem}
+    .chip{font-size:.72rem;padding:.55rem .75rem}
+    .chip i{width:28px;height:28px}
+    .icons .hide-sm{display:none}
+    .cat{aspect-ratio:3/4;padding:1rem}
+    .cat img{top:14%;height:44%}
+    .cat h3{font-size:1.15rem}
+    .cat .arrow{width:34px;height:34px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-label="Avisos">
+  <div class="ticker-track">
+    <span>Frete grátis acima de R$ 219,99</span><span>3% de desconto no Pix</span><span>Parcele em até 12x</span><span>De Itupeva para todo o Brasil</span><span>Atendimento direto no WhatsApp</span>
+    <span>Frete grátis acima de R$ 219,99</span><span>3% de desconto no Pix</span><span>Parcele em até 12x</span><span>De Itupeva para todo o Brasil</span><span>Atendimento direto no WhatsApp</span>
+  </div>
+</div>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#" class="logo" aria-label="Filira Cosmetics, início">
+      <span class="logo-mark"><i class="mono">F</i></span>
+      <span class="logo-text"><b>Filira</b><small>COSMETICS</small></span>
+    </a>
+    <nav class="menu" id="menu">
+      <a href="#perfumes">Perfumes árabes</a>
+      <a href="#dia-a-dia">Body splash</a>
+      <a href="#dia-a-dia">Skincare & corpo</a>
+      <a href="#sobre">Quem somos</a>
+    </nav>
+    <div class="icons">
+      <button class="icon-btn hide-sm" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      <a class="icon-btn hide-sm" href="https://www.filiracosmetics.com.br/account/login/" aria-label="Minha conta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
+      <a class="icon-btn" href="https://www.filiracosmetics.com.br/comprar/" aria-label="Carrinho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span class="cart-count">0</span></a>
+      <button class="icon-btn burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding:0">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">Perfumaria árabe · Cuidados diários</span>
+        <h1>O verdadeiro <em>autocuidado</em> começa aqui.</h1>
+        <p class="lead">Perfumes árabes que duram o dia inteiro, body splash e os cuidados de todo dia, escolhidos a dedo por quem usa. De Itupeva para todo o Brasil.</p>
+        <div class="hero-ctas">
+          <a href="#perfumes" class="btn btn-dark">Ver perfumes árabes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          <a href="https://wa.me/5511981191078" target="_blank" rel="noopener" class="btn btn-ghost">Me ajuda a escolher</a>
+        </div>
+        <div class="hero-facts">
+          <div><b>3% off</b><span>pagando no Pix</span></div>
+          <div><b>12x</b><span>no cartão</span></div>
+          <div><b>Frete grátis</b><span>acima de R$ 219,99</span></div>
+        </div>
+      </div>
+      <div class="stage reveal" aria-hidden="true">
+        <div class="arch"><div class="ring"></div></div>
+        <img class="bottle b2" src="img/png/asad-elixir.webp" alt="">
+        <img class="bottle b3" src="img/png/dalal.webp" alt="">
+        <img class="bottle b1" src="img/png/hawas-ice.webp" alt="">
+        <div class="chip chip-a"><i>✦</i><div><b>Hawas Ice</b><span>de R$ 360 por R$ 315</span></div></div>
+        <div class="chip chip-b"><i>♡</i><div><b>9 fragrâncias</b><span>masculinas e femininas</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="eyebrow">Categorias</span><h2 style="margin-top:.8rem">Tudo pro seu <em>ritual</em></h2></div>
+        <p>Do perfume que marca presença ao hidratante de todo dia. Escolha por onde começar.</p>
+      </div>
+      <div class="cats">
+        <a href="#perfumes" class="cat reveal"><span class="n">01</span><img src="img/png/badee.webp" alt=""><div class="go"><h3>Perfumes<br>árabes</h3><span class="arrow">→</span></div></a>
+        <a href="#dia-a-dia" class="cat reveal"><span class="n">02</span><img src="img/png/bronze-goddess.webp" alt=""><div class="go"><h3>Body<br>splash</h3><span class="arrow">→</span></div></a>
+        <a href="#dia-a-dia" class="cat reveal"><span class="n">03</span><img src="img/png/nivea-facial.webp" alt=""><div class="go"><h3>Cuidado<br>com o rosto</h3><span class="arrow">→</span></div></a>
+        <a href="#dia-a-dia" class="cat reveal"><span class="n">04</span><img src="img/png/nivea-sun-fps70.webp" alt=""><div class="go"><h3>Corpo<br>& sol</h3><span class="arrow">→</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="perfumes" id="perfumes">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="eyebrow">A coleção</span><h2 style="margin-top:.8rem">Os árabes <em>da Filira</em></h2></div>
+        <div class="filters" role="tablist" aria-label="Filtrar perfumes">
+          <button class="on" data-f="all">Todos</button>
+          <button data-f="Masculino">Masculinos</button>
+          <button data-f="Feminino">Femininos</button>
+          <button data-f="Unissex">Unissex</button>
+        </div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="founder" id="sobre">
+    <div class="wrap founder-grid">
+      <div class="photo reveal">
+        <i class="mono">F</i>
+        <span class="note">📸 Foto do fundador entra aqui</span>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Quem está por trás</span>
+        <p class="quote">“Não uso porque vendo. <em>Vendo porque eu uso.</em>”</p>
+        <p class="txt">A Filira nasceu em 2025, em Itupeva, com uma ideia simples: só colocar na loja o que a gente mesmo usa e indicaria pra um amigo.</p>
+        <p class="txt">Ficou em dúvida entre dois perfumes? Chama no WhatsApp. Aqui quem responde é gente, não robô.</p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/5511981191078" target="_blank" rel="noopener" class="btn btn-dark">Falar no WhatsApp</a>
+          <a href="https://instagram.com/filiracosmetics" target="_blank" rel="noopener" class="btn btn-ghost">Ver no Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="daily" id="dia-a-dia">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="eyebrow">Cuidado de todo dia</span><h2 style="margin-top:.8rem">Hidratou, <em>perfumou</em>, saiu.</h2></div>
+        <div class="rail-nav"><button aria-label="Anterior" data-dir="-1">←</button><button aria-label="Próximo" data-dir="1">→</button></div>
+      </div>
+      <div class="rail" id="rail"></div>
+    </div>
+  </section>
+
+  <div class="wrap perks">
+    <div class="perk reveal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></i><div><b>Pagamento seguro</b><span>Compra protegida do início ao fim</span></div></div>
+    <div class="perk reveal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 12l9 9 9-9z"/><path d="m8.5 12 3.5 3.5 3.5-3.5L12 8.5z"/></svg></i><div><b>3% off no Pix</b><span>Ou em até 12x no cartão</span></div></div>
+    <div class="perk reveal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></i><div><b>Envio pra todo o Brasil</b><span>Grátis acima de R$ 219,99</span></div></div>
+    <div class="perk reveal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.8 7L4 20l1.1-4A8 8 0 1 1 20 12z"/></svg></i><div><b>Atendimento humano</b><span>Fale direto com a gente</span></div></div>
+  </div>
+
+  <section class="insta">
+    <div class="wrap reveal">
+      <span class="eyebrow">@filiracosmetics</span>
+      <h2>Dicas, lançamentos e <em>rotinas</em> no Insta</h2>
+      <p>Toda semana tem conteúdo novo: rotina noturna, os matches de perfume e o que chegou na loja.</p>
+      <a href="https://instagram.com/filiracosmetics" target="_blank" rel="noopener" class="btn btn-dark">Seguir a Filira</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="logo"><span class="logo-mark"><i class="mono">F</i></span><span class="logo-text"><b>Filira</b><small>COSMETICS</small></span></div>
+        <p>O verdadeiro autocuidado começa aqui. De Itupeva para todo o Brasil.</p>
+        <div class="social">
+          <a href="https://instagram.com/filiracosmetics" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+          <a href="https://www.tiktok.com/@Filira.cosmetics" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 2.8 2.3 4.4 5 4.6"/></svg></a>
+          <a href="https://www.facebook.com/FIliraCosmetics" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M14.5 8H16V4.5h-2c-2.5 0-4 1.6-4 4.2V11H8v3.5h2V21h3.5v-6.5h2.3L16 11h-2.5V9c0-.6.4-1 1-1z"/></svg></a>
+          <a href="https://wa.me/5511981191078" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.8 7L4 20l1.1-4A8 8 0 1 1 20 12z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Loja</h4><ul><li><a href="#perfumes">Perfumes árabes</a></li><li><a href="#dia-a-dia">Body splash</a></li><li><a href="#dia-a-dia">Skincare</a></li><li><a href="#dia-a-dia">Protetor solar</a></li></ul></div>
+      <div><h4>Ajuda</h4><ul><li><a href="https://wa.me/5511981191078">Fale conosco</a></li><li><a href="#">Trocas e devoluções</a></li><li><a href="#">Prazo de entrega</a></li><li><a href="#">Formas de pagamento</a></li></ul></div>
+      <div><h4>Pagamento</h4><ul><li>Pix com 3% de desconto</li><li>Cartão em até 12x</li><li>Compra segura</li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Filira Cosmetics · CNPJ 61.992.153/0001-57</span><span>Itupeva · SP</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5511981191078" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.5 6.5 0 0 0 1.3 3.4 14.8 14.8 0 0 0 5.7 5c2.1.9 2.9 1 4 .8a3.4 3.4 0 0 0 2.2-1.6 2.8 2.8 0 0 0 .2-1.6c-.1-.2-.3-.3-.6-.4z"/></svg></a>
+
+<script>
+  const LOJA = "https://www.filiracosmetics.com.br/produtos/";
+  const perfumes = [
+    {n:"Hawas Ice", g:"Masculino", p:315, de:360, img:"hawas-ice", u:"perfumes-masculinos-hawasice", feat:true, d:"Fresco, frutado e vibrante, com uma sensação gelada e moderna. O destaque da casa, agora com 13% off."},
+    {n:"Asad Elixir", g:"Masculino", p:265, img:"asad-elixir", u:"perfumes-masculinos-asad-elixir"},
+    {n:"Turathi Electric", g:"Masculino", p:410, img:"turathi", u:"perfumes-masculinos-turathieletric"},
+    {n:"Dalal", g:"Feminino", p:310, img:"dalal", u:"perfumes-femininos-dalal"},
+    {n:"Vulcan Baie", g:"Feminino", p:350, img:"vulcan-baie", u:"perfumes-femininos-vulcanbaie"},
+    {n:"Bade'e Al Oud Noble Blush", g:"Feminino", p:240, img:"badee", u:"perfumes-femininos-badeealoud-noblebush"},
+    {n:"Yara Tous", g:"Feminino", p:200, img:"yara-tous", u:"perfumes-femininos-yaratous"},
+    {n:"Sabah Al Ward", g:"Feminino", p:190, img:"sabah", u:"perfumes-femininos-sabahalward"},
+    {n:"Vulcan Feu", g:"Unissex", p:310, img:"vulcan-feu", u:"perfumes-unissex-vulcanfeu"}
+  ];
+  const diario = [
+    {n:"Body Splash Bronze Goddess", g:"Kiss New York", p:52, img:"bronze-goddess", u:"kiss-ny-body-splash-bronze-goodess"},
+    {n:"Body Splash Dark Kiss", g:"Kiss New York", p:45, img:"dark-kiss", u:"kiss-ny-body-splash-dark-kiss"},
+    {n:"Creme Nivea Lata 145g", g:"Corpo", p:38, img:"nivea-lata-145", u:"nivea-hidratantes-corpo-lata-145g"},
+    {n:"Creme Facial Controle de Oleosidade", g:"Rosto", p:34, img:"nivea-facial", u:"nivea-hidratante-faciais-controle-de-oleosidade"},
+    {n:"Protetor Solar Facial FPS 70", g:"Rosto", p:48, img:"nivea-fps70-facial", u:"nivea-protetorsolar-facial-fps70"},
+    {n:"Sun Protect & Hidrata FPS 70", g:"Corpo & sol", p:80, img:"nivea-sun-fps70", u:"nivea-protetoressolar-protecthidrata-fps70"},
+    {n:"Firmador Q10 + Vitamina C", g:"Corpo", p:30, img:"nivea-q10", u:"nivea-hidratantes-corpo-firmadorq10vitaminac-pelessecas"},
+    {n:"Labial Morango Silvestre", g:"Lábios", p:22, img:"nivea-labial-morango", u:"nivea-hidratantes-labial-morangosilvestre"},
+    {n:"Loção Beleza Radiante", g:"Corpo", p:28, img:"nivea-beleza", u:"nivea-hidratantes-corpo-belezaradiante-400ml"}
+  ];
+  const brl = v => v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+  const card = (x) => {
+    const tags = [];
+    if (x.de) tags.push(`<span class="tag off">-${Math.round((1 - x.p/x.de)*100)}%</span>`);
+    if (x.p >= 219.99) tags.push(`<span class="tag">Frete grátis</span>`);
+    return `<article class="card${x.feat ? " feat" : ""}" data-g="${x.g}">
+      <a href="${LOJA + x.u}/" target="_blank" rel="noopener" class="pic">
+        <img src="img/png/${x.img}.webp" alt="${x.n}" loading="lazy">
+        <div class="tags">${tags.join("")}</div>
+      </a>
+      <div class="body">
+        <span class="g">${x.g}</span>
+        <h3>${x.n}</h3>${x.d ? `<p class="desc">${x.d}</p>` : ""}
+        <div class="price"><b>${brl(x.p)}</b>${x.de ? `<s>${brl(x.de)}</s>` : ""}</div>
+        <span class="pix">${brl(x.p*0.97)} no Pix</span>
+        <div class="add"><a href="${LOJA + x.u}/" target="_blank" rel="noopener">Comprar</a></div>
+      </div>
+    </article>`;
+  };
+  document.getElementById("grid").innerHTML = perfumes.map(card).join("");
+  document.getElementById("rail").innerHTML = diario.map(card).join("");
+
+  // filtro dos perfumes
+  document.querySelectorAll(".filters button").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".filters button").forEach(o => o.classList.toggle("on", o === b));
+    document.querySelectorAll("#grid .card").forEach(c => c.classList.toggle("hide", b.dataset.f !== "all" && c.dataset.g !== b.dataset.f));
+  }));
+
+  // setas do carrossel
+  const rail = document.getElementById("rail");
+  document.querySelectorAll(".rail-nav button").forEach(b => b.addEventListener("click", () => {
+    rail.scrollBy({left: rail.clientWidth * 0.8 * Number(b.dataset.dir), behavior:"smooth"});
+  }));
+
+  // menu no celular
+  const burger = document.getElementById("burger"), menu = document.getElementById("menu");
+  burger.addEventListener("click", () => {
+    const open = menu.classList.toggle("open");
+    burger.setAttribute("aria-expanded", open);
+  });
+  menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => menu.classList.remove("open")));
+
+  // borda do topo ao rolar
+  const header = document.querySelector("header");
+  addEventListener("scroll", () => header.classList.toggle("scrolled", scrollY > 10), {passive:true});
+
+  // aparecer ao rolar
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
